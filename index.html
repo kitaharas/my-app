@@ -1,12 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>kitaharas | my-app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    hello world
+    <div id="container">
+        <div class="anime-title">
+            hello world
+        </div>
+        <button onclick="toggleClass()">Animation</button>
+    </div>
+
+    <script>
+        function toggleClass(){
+            document.querySelector('.anime-title').classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+            const el = document.querySelector('.anime-title');
+            const str = el.innerHTML.trim().split("");
+            console.log(str);
+            
+            el.innerHTML = str.reduce((acc, curr) => {
+                curr = curr.replace(/\s+/, '&nbsp;');
+                return `${acc}<span class="char">${curr}</span>`;
+            }, "");
+            console.log(el);
+
+            // let concatStr = '';
+
+
+
+            // for(let c of str){
+            //     c = c.replace(/\s+/, '&nbsp;');
+            //     concatStr += `<span class="char">${c}</span>`;
+            // }
+            const obj1 = {
+                "taro": 20,
+                "jiro": 18,
+                "saburo": 24,
+            }
+
+            const arry2 = [
+                "ローソン",
+                "かつや",
+                "セブンイレブン",
+                "かぶとむし"
+            ];
+
+            const arry = [1,2,3,4,5];
+            const arry3 = arry2.reduce((acc, curr) => {
+                console.log(acc, curr);
+                return `${acc}<span class="word">${curr}</span>`;
+            },"")
+            console.log(arry3);
+
+
+
+
+
+        });
+    </script>
+    <script src="main.js">
+       
+    </script>
 </body>
 </html>
