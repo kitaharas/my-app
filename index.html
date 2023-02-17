@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     
 </head>
-<body onload="draw();">
+<body onload="draw()">
     <div id="container">
         <button onclick="toggleClass()">Animation</button>
         
@@ -62,8 +62,8 @@
                     //     img.crossOrigin = "anonymous";
                         ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
                     }
-                    console.log(aaa);
                     const aaa = canvas.toDataURL();
+                    console.log(aaa);
                 }
                
 
