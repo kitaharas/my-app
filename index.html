@@ -58,13 +58,14 @@
                     // Canvas上に画像を表示
                     const img = new Image();
                     img.src = uploadImgSrc;
-                    // img.onload = function() {
+                    img.onload = function() {
                     //     img.crossOrigin = "anonymous";
                         ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
                     }
                     console.log(aaa);
                     const aaa = canvas.toDataURL();
-               }
+                }
+               
 
                function loadLocalImage(e) {
                     console.log(e);
