@@ -8,19 +8,19 @@
 // }
 
 // console.log(shoichi);
-let a = 0;
+// let a = 0;
 
-const taro = {
-    name : 'jiro',
-    unko : function(aaa) {
-        console.log(`${aaa}それは${this.name}`)
-        console.log(this.name, arguments, a)
-    }
+// const taro = {
+//     name : 'jiro',
+//     unko : function(aaa) {
+//         console.log(`${aaa}それは${this.name}`)
+//         console.log(this.name, arguments, a)
+//     }
 
-}
+// }
 
 
-taro.unko("tappuri")
+// taro.unko("tappuri")
 
 // function toggleClass(){
 //     document.querySelector('.anime-title').classList.toggle('active');

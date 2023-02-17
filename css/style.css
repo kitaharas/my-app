@@ -383,6 +383,20 @@ html {
   background-color: steelblue;
 }
 
+.member {
+  padding: 8px;
+  margin: 100px auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.member p {
+  font-size: 1.5em;
+  margin-bottom: 24px;
+}
+.member p:last-child {
+  margin-bottom: 0;
+}
+
 .anime-title {
   position: absolute;
   top: 50%;
@@ -448,4 +462,9 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+canvas {
+  border: 1px solid black;
+  background-color: white;
+  display: block;
 }/*# sourceMappingURL=style.css.map */

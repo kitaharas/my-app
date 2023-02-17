@@ -10,64 +10,273 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
-<body>
+<body onload="draw();">
     <div id="container">
+        <button onclick="toggleClass()">Animation</button>
+        
+        <!-- <div class="member"></div> -->
+        <canvas id="tutorial" width="400" height="300">canvasです</canvas>
+
+        <div class="upload"><input type="file" name="file" id="file"></div>
+        <div id="result"></div>
+
+
+
+
         <div class="anime-title">
             hello world
         </div>
-        <button onclick="toggleClass()">Animation</button>
     </div>
 
     <script>
-        function toggleClass(){
-            document.querySelector('.anime-title').classList.toggle('active');
+       
+        
+
+
+
+
+        function draw(){
+            const canvas = document.getElementById('tutorial');
+            // console.log(canvas);
+            const canvasWidth = 400;
+            const canvasHeight = 300;
+            if(canvas.getContext){
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                img.src = 'https://www.tam-tam.co.jp/tipsnote/wpdata/wp-content/uploads/2017/10/canvas_image.jpg';
+                img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / canvasHeight));
+                }
+
+                
+                // Canvas上に画像を表示する
+                function canvasDraw(uploadImgSrc) {
+                    // canvas内の要素をクリアする
+                    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                    // Canvas上に画像を表示
+                    const img = new Image();
+                    img.src = uploadImgSrc;
+                    // img.onload = function() {
+                    //     img.crossOrigin = "anonymous";
+                        ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
+                    }
+                    console.log(aaa);
+                    const aaa = canvas.toDataURL();
+               }
+
+               function loadLocalImage(e) {
+                    console.log(e);
+                    // ファイル情報を取得
+                    const fileData = e.target.files[0];
+
+                    // 画像ファイル以外は処理を止める
+                    if(!fileData.type.match('image.*')) {
+                        alert('画像を選択してください');
+                        return;
+                    }
+
+                    // FileReaderオブジェクトを使ってファイル読み込み
+                    const reader = new FileReader();
+                    // ファイル読み込みに成功したときの処理
+                    reader.onload = function() {
+                    // ブラウザ上に画像を表示する
+                        // const img = document.createElement('img');
+                        // img.src = reader.result;
+                        // result.appendChild(img);
+
+                        canvasDraw(reader.result);
+                    }
+                    // ファイル読み込みを実行
+                    reader.readAsDataURL(fileData);
+                }
+
+                // ファイルが指定された時にloadLocalImage()を実行
+                file.addEventListener('change', loadLocalImage, false);
+
+       
+
+
+
+
+            } else {
+                console.log('canvas未対応');
+            }
         }
 
+
+        const file = document.getElementById('file');
+        const result = document.getElementById('result');
+
+       
+
+
+
+
+        
         document.addEventListener('DOMContentLoaded', function(){
-            const el = document.querySelector('.anime-title');
-            const str = el.innerHTML.trim().split("");
-            console.log(str);
+
+
+            // const el1 = document.querySelector('.member');
             
-            el.innerHTML = str.reduce((acc, curr) => {
+
+            // const arry = [1,2,3,4,5];
+
+            // arry.reduce((acc, curr) => {
+            //     console.log(acc, curr);
+            //     return acc * curr;
+            // });
+
+            
+            // const json1 = [
+            //     {
+            //         "name":"shinji",
+            //         "age":20,
+            //         "weight":75,
+            //         "status":"良好"
+            //     },
+            //     {
+            //         "name":"hide",
+            //         "age":25,
+            //         "weight":82,
+            //         "status":"疲労"
+            //     },
+            //     {
+            //         "name":"yujiro",
+            //         "age":38,
+            //         "weight":120,
+            //         "status":"最強"
+            //     },
+            // ];
+
+            // el1.innerHTML = json1.reduce((acc, curr) =>{
+            //     console.log(acc, curr);
+            //     return `${acc}<p>名前：${curr.name}　年齢${curr.age}歳　体調：${curr.status}</p>`;
+            // },"");
+
+
+
+
+
+
+
+
+            const el2 = document.querySelector('.anime-title');
+            const str = el2.innerHTML.trim().split("");
+            // console.log(str);
+
+            el2.innerHTML = str.reduce((acc, curr) => {
                 curr = curr.replace(/\s+/, '&nbsp;');
                 return `${acc}<span class="char">${curr}</span>`;
             }, "");
-            console.log(el);
 
+
+            
             // let concatStr = '';
-
-
-
             // for(let c of str){
             //     c = c.replace(/\s+/, '&nbsp;');
             //     concatStr += `<span class="char">${c}</span>`;
             // }
-            const obj1 = {
-                "taro": 20,
-                "jiro": 18,
-                "saburo": 24,
-            }
+            // console.log(concatStr);
 
-            const arry2 = [
-                "ローソン",
-                "かつや",
-                "セブンイレブン",
-                "かぶとむし"
-            ];
 
-            const arry = [1,2,3,4,5];
-            const arry3 = arry2.reduce((acc, curr) => {
-                console.log(acc, curr);
-                return `${acc}<span class="word">${curr}</span>`;
-            },"")
-            console.log(arry3);
+
+
+            // const arry = [1,2,3,4,5];
+            // arry.reduce((acc, curr) =>{
+            //     console.log(acc, curr);
+            //     return acc + curr;
+            // });
 
 
 
 
 
+            // const json1 = [
+            //     {
+            //         "name":"shinji",
+            //         "age":20,
+            //         "weight":75,
+            //         "status":"良好"
+            //     },
+            //     {
+            //         "name":"hide",
+            //         "age":25,
+            //         "weight":82,
+            //         "status":"疲労"
+            //     },
+            //     {
+            //         "name":"yujiro",
+            //         "age":38,
+            //         "weight":120,
+            //         "status":"最強"
+            //     },
+            // ];
+            
+            
+            // el1.innerHTML = json1.reduce((acc, curr) =>{
+            //     // console.log(acc, curr);
+            //     return `${acc}<p>名前：${curr.name}　年齢${curr.age}歳　体調：${curr.status}</p>`;
+            // },"");
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // const el2 = document.querySelector('.anime-title');
+            // const str = el2.innerHTML.trim().split("");
+            // console.log(str);
+            
+            // el2.innerHTML = str.reduce((acc, curr) => {
+            //     curr = curr.replace(/\s+/, '&nbsp;');
+            //     return `${acc}<span class="char">${curr}</span>`;
+            // }, "");
+            // console.log(el2);
+
+
+
+            // let concatStr = '';
+            // for(let c of str){
+            //     c = c.replace(/\s+/, '&nbsp;');
+            //     concatStr += `<span class="char">${c}</span>`;
+            // }
+            // console.log(concatStr);
+
+            // const obj1 = {
+            //     "taro": 20,
+            //     "jiro": 18,
+            //     "saburo": 24,
+            // }
+
+            // const arry2 = [
+            //     "ローソン",
+            //     "かつや",
+            //     "セブンイレブン",
+            //     "かぶとむし"
+            // ];
+
+           
+
+            // const arry = [1,2,3,4,5];
+            // const arry3 = arry2.reduce((acc, curr) => {
+            //     console.log(acc, curr);
+            //     return `${acc}<span class="word">${curr}</span>`;
+            // },"")
+            // console.log(arry3);
+
+            
+            
+            
         });
+        function toggleClass(){
+            document.querySelector('.anime-title').classList.toggle('active');
+        }
     </script>
     <script src="main.js">
        
